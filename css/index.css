@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+input,
+button {
+  font-size: 16px;
+  padding: 8px 20px;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  outline: none;
+}
+button {
+  color: white;
+  border: 2px solid transparent;
+  background-color: var(--btn-color);
+}
+input:focus {
+  outline: none;
+  border: 2px solid transparent;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.7);
+}
+
+:root {
+  --primary-color: #c9dcee;
+  --secondary-color: #eaf0f6;
+  --third-color: #adc5dc;
+  --btn-color: #5e17dc;
+  --btn-color-active: #c8d6e4;
+}
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
+}
+header .container {
+  height: 180px;
+}
+.wrapper-head-bar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.wrapper-head-bar::after {
+  content: "";
+  position: absolute;
+  top: -25%;
+  left: -8%;
+  width: 150px;
+  height: 150px;
+  background-color: var(--third-color);
+  border-radius: 50%;
+}
+.wrapper-head-bar::before {
+  content: "";
+  position: absolute;
+  bottom: -25%;
+  right: -9%;
+  width: 150px;
+  height: 150px;
+  background-color: var(--third-color);
+  border-radius: 50%;
+}
+
+.head-bar-image {
+  width: 30%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.head-bar-image img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 40px;
+}
+.head-bar-content {
+  width: 50%;
+}
+.head-bar-content h1 {
+  margin-bottom: 5px;
+}
+.head-bar-content p {
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}
+/* header end */
+
+/* main content start */
+/* search section start */
+.search-section {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+  margin-top: 5px;
+  width: 100%;
+}
+#searchBook {
+  width: 100%;
+}
+#searchBook input {
+  width: 75%;
+}
+#searchBook button {
+  width: 15%;
+}
+.search-section h2 {
+  margin-bottom: 5px;
+}
+.search-section h2 > span {
+  color: red;
+}
+
+#searchSubmit {
+  background-color: var(--btn-color);
+}
+#searchBookTitle {
+  margin-inline: 10px;
+}
+#bookSubmit {
+  width: 100%;
+}
+/* search section end */
+.wrapper-main-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  margin-top: 20px;
+}
+.input-section {
+  padding: 20px;
+  width: 40%;
+}
+
+.wrapper-book-shelf {
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  background-color: var(--secondary-color);
+}
+.book-shelf {
+  margin-bottom: 10px;
+}
+.book-shelf h2 {
+  margin-bottom: 5px;
+}
+.book-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.book-list .action {
+  display: flex;
+  gap: 5px;
+}
+.book-list article {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--btn-color-active);
+  margin-bottom: 10px;
+}
+
+.input-section h2 {
+  margin-bottom: 5px;
+}
+#inputBook .input,
+.input-inline {
+  margin-bottom: 10px;
+}
+
+.input input {
+  width: 100%;
+  margin-top: 5px;
+}
+/* main content end */
+
+@media (min-width: 768px) and (max-width: 829px) {
+  #searchBook input {
+    width: 55%;
+  }
+  #searchBook button {
+    width: 32%;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Gaya CSS yang akan diterapkan pada ponsel */
+  body {
+    font-size: 14px;
+  }
+  input,
+  button {
+    font-size: 12px;
+  }
+  .container {
+    width: 90%;
+  }
+  header .container {
+    height: 300px;
+  }
+  .wrapper-head-bar {
+    gap: 35px;
+  }
+  .wrapper-head-bar::after {
+    top: -15%;
+    left: -30%;
+    width: 150px;
+    height: 150px;
+  }
+  .wrapper-head-bar::before {
+    bottom: -15%;
+    right: -25%;
+    width: 150px;
+    height: 150px;
+  }
+  .head-bar-content p {
+    font-size: 12px;
+  }
+  .head-bar-image {
+    width: 30%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .head-bar-image img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 40px;
+  }
+  .head-bar-content {
+    width: 50%;
+  }
+  .wrapper-main-content {
+    flex-direction: column;
+  }
+  .input-section {
+    padding: 0;
+    width: 100%;
+  }
+  .wrapper-book-shelf {
+    width: 100%;
+  }
+  .search-section {
+    margin-block: 20px;
+  }
+  #searchBook input {
+    width: 50%;
+  }
+  #searchBook button {
+    width: 30%;
+  }
+}

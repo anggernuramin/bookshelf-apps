@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf Apps</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <!-- css -->
+    <link rel="stylesheet" href="css/index.css" />
+    <!-- link favicon -->
+    <link rel="stylesheet" href="assets/head-bar-image.png" />
+  </head>
+  <body>
+    <header>
+      <div class="container wrapper-head-bar">
+        <div class="head-bar-image">
+          <img src="./assets/head-bar-image.png" alt="" />
+        </div>
+        <div class="head-bar-content">
+          <h1>Bookshelf Apps</h1>
+          <p>"Mengelola Koleksi Buku Anda dengan Mudah.Siap Membantu Anda Mengelola Buku-buku Anda dengan Lebih Efisien dan Menyenangkan."</p>
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <section class="search-section">
+        <h2>Cari Buku <span>(Opsional)</span></h2>
+        <form id="searchBook">
+          <label for="searchBookTitle">Judul</label>
+          <input id="searchBookTitle" placeholder="Naruto shipudden .... " type="text" />
+          <button id="searchSubmit" type="submit">Cari</button>
+        </form>
+      </section>
+      <div class="wrapper-main-content">
+        <section class="input-section">
+          <h2>Masukkan Buku Baru</h2>
+          <form id="inputBook">
+            <div class="input">
+              <label for="inputBookTitle">Judul</label>
+              <input id="inputBookTitle" type="text" required />
+            </div>
+            <div class="input">
+              <label for="inputBookAuthor">Penulis</label>
+              <input id="inputBookAuthor" type="text" required />
+            </div>
+            <div class="input">
+              <label for="inputBookYear">Tahun</label>
+              <input id="inputBookYear" type="number" required />
+            </div>
+            <div class="input-inline">
+              <label for="inputBookIsComplete">Selesai dibaca</label>
+              <input id="inputBookIsComplete" type="checkbox" />
+            </div>
+            <button id="bookSubmit" type="submit">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
+          </form>
+        </section>
+        <div class="wrapper-book-shelf">
+          <section class="book-shelf">
+            <h2>Belum selesai dibaca</h2>
+
+            <div id="incompleteBookshelfList" class="book-list">
+              <article class="book-item">
+                <h3>Book Title</h3>
+                <p>Penulis: John Doe</p>
+                <p>Tahun: 2002</p>
+
+                <div class="action">
+                  <button class="green">Selesai dibaca</button>
+                  <button class="red">Hapus buku</button>
+                </div>
+              </article>
+              <article class="book-item">
+                <h3>Book Title</h3>
+                <p>Penulis: John Doe</p>
+                <p>Tahun: 2002</p>
+
+                <div class="action">
+                  <button class="green">Selesai dibaca</button>
+                  <button class="red">Hapus buku</button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="book-shelf">
+            <h2>Selesai dibaca</h2>
+
+            <div id="completeBookshelfList" class="book-list">
+              <article class="book-item">
+                <h3>Book Title</h3>
+                <p>Penulis: John Doe</p>
+                <p>Tahun: 2002</p>
+
+                <div class="action">
+                  <button class="green">Belum selesai di Baca</button>
+                  <button class="red">Hapus buku</button>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
