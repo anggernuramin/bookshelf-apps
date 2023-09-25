@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/index.css" />
     <!-- link favicon -->
     <link rel="icon" type="image/png" href="assets/notebook.png" />
+    <!-- link icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
   </head>
   <body>
     <header>
@@ -60,7 +62,7 @@
             <h2>Belum selesai dibaca</h2>
 
             <div id="incompleteBookshelfList" class="book-list">
-              <!-- <article class="book-item">
+              <article class="book-item">
                 <h3>Book Title</h3>
                 <p>Penulis: John doe</p>
                 <p>Tahun: 2002</p>
@@ -76,10 +78,10 @@
                 <p>Tahun: 2002</p>
 
                 <div class="action">
-                  <button class="green">Selesai dibaca</button>
-                  <button class="red">Hapus buku</button>
+                  <button class="green"><i class="fas fa-undo"></i>Selesai dibaca</button>
+                  <button class="red"><i class="fas fa-trash"></i> Hapus buku</button>
                 </div>
-              </article> -->
+              </article>
             </div>
           </section>
 
@@ -99,6 +101,7 @@
               </article> -->
             </div>
           </section>
+          <button class="removeAllBooks red">Hapus semua Buku</button>
         </div>
       </div>
     </main>

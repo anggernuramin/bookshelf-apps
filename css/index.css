@@ -31,12 +31,26 @@ input:focus {
   --primary-color: #c9dcee;
   --secondary-color: #eaf0f6;
   --third-color: #adc5dc;
-  --btn-color: #5e17dc;
+  --btn-color: rgba(94, 23, 220, 1);
   --btn-color-active: #c8d6e4;
 }
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
+}
+.red {
+  transition: all 0.3s;
+  background-color: #d81a1a;
+}
+.red:hover {
+  background-color: #f03529;
+}
+.green {
+  transition: all 0.3s;
+  background-color: rgba(40, 167, 69, 1);
+}
+.green:hover {
+  background-color: rgba(40, 167, 69, 0.9);
 }
 header .container {
   height: 180px;
@@ -121,8 +135,14 @@ header .container {
   width: 18%;
 }
 
-#searchSubmit {
+#searchSubmit,
+#bookSubmit {
+  transition: all 0.3s;
   background-color: var(--btn-color);
+}
+#searchSubmit:hover,
+#bookSubmit:hover {
+  background-color: rgba(94, 23, 220, 0.9);
 }
 #searchBookTitle {
   margin-inline: 10px;
@@ -148,18 +168,25 @@ header .container {
   justify-content: space-between;
   align-items: start;
   gap: 10px;
-  padding: 20px 10px 10px 20px;
+  padding: 20px 10px 50px 20px;
   border-radius: 10px;
   width: 70%;
   background-color: var(--secondary-color);
+  position: relative;
 }
 .book-shelf {
   margin-bottom: 10px;
   width: 50%;
   overflow: hidden;
 }
+.removeAllBooks {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 190px !important;
+}
+
 .book-shelf h2 {
-  text-decoration: underline;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 5px;
@@ -183,6 +210,13 @@ header .container {
   display: flex;
   gap: 5px;
 }
+.book-list .action button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 .book-list .action .green,
 .red {
   width: 50%;
@@ -248,7 +282,6 @@ header .container {
   background-color: rgba(0, 0, 0, 0.7);
 }
 .btn-confirm-delete .red {
-  background-color: red;
   width: 90px;
 }
 
