@@ -26,7 +26,6 @@
     </header>
     <main class="container">
       <section class="search-section">
-        <h2>Cari Buku <span>(Opsional)</span></h2>
         <form id="searchBook">
           <label for="searchBookTitle">Judul</label>
           <input id="searchBookTitle" placeholder="Naruto shipudden .... " type="text" />
@@ -39,7 +38,7 @@
           <form id="inputBook">
             <div class="input">
               <label for="inputBookTitle">Judul</label>
-              <input id="inputBookTitle" type="text" required />
+              <input id="inputBookTitle" autofocus type="text" required />
             </div>
             <div class="input">
               <label for="inputBookAuthor">Penulis</label>
@@ -53,7 +52,7 @@
               <label for="inputBookIsComplete">Selesai dibaca</label>
               <input id="inputBookIsComplete" type="checkbox" />
             </div>
-            <button id="bookSubmit" type="submit">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
+            <button id="bookSubmit" type="submit">Masukkan Buku ke rak <br /><span id="keteranganBuku">Belum selesai dibaca</span></button>
           </form>
         </section>
         <div class="wrapper-book-shelf">
@@ -61,9 +60,9 @@
             <h2>Belum selesai dibaca</h2>
 
             <div id="incompleteBookshelfList" class="book-list">
-              <article class="book-item">
+              <!-- <article class="book-item">
                 <h3>Book Title</h3>
-                <p>Penulis: John Doe</p>
+                <p>Penulis: John doe</p>
                 <p>Tahun: 2002</p>
 
                 <div class="action">
@@ -80,7 +79,7 @@
                   <button class="green">Selesai dibaca</button>
                   <button class="red">Hapus buku</button>
                 </div>
-              </article>
+              </article> -->
             </div>
           </section>
 
@@ -88,7 +87,7 @@
             <h2>Selesai dibaca</h2>
 
             <div id="completeBookshelfList" class="book-list">
-              <article class="book-item">
+              <!-- <article class="book-item">
                 <h3>Book Title</h3>
                 <p>Penulis: John Doe</p>
                 <p>Tahun: 2002</p>
@@ -97,11 +96,26 @@
                   <button class="green">Belum selesai di Baca</button>
                   <button class="red">Hapus buku</button>
                 </div>
-              </article>
+              </article> -->
             </div>
           </section>
         </div>
       </div>
     </main>
+    <div class="wrapper-confirm-delete">
+      <h2>Konfirmasi Hapus</h2>
+      <hr />
+      <p>
+        Apakah Anda yakin ingin menghapus buku ini? <br />
+        Tindakan ini akan menghapus buku dari daftar buku secara permanen. <br />
+      </p>
+      <div class="btn-confirm-delete action">
+        <button id="batalDelete" class="grey">Batal</button>
+        <button id="deleteBook" class="red">Ok</button>
+      </div>
+      <div></div>
+    </div>
+
+    <script src="js/index.js"></script>
   </body>
 </html>

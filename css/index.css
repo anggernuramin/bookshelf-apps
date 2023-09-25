@@ -9,7 +9,7 @@ body {
 
 input,
 button {
-  font-size: 16px;
+  font-size: 15px;
   padding: 8px 20px;
   border-radius: 5px;
   border: 2px solid rgba(0, 0, 0, 0.1);
@@ -35,8 +35,7 @@ input:focus {
   --btn-color-active: #c8d6e4;
 }
 .container {
-  width: 80%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
 }
 header .container {
@@ -98,6 +97,7 @@ header .container {
   font-size: 17px;
   color: rgba(0, 0, 0, 0.7);
   font-weight: 600;
+  margin-bottom: 25px;
 }
 /* header end */
 
@@ -108,7 +108,7 @@ header .container {
   justify-content: end;
   align-items: end;
   flex-direction: column;
-  margin-top: 5px;
+  margin-block: 15px;
   width: 100%;
 }
 #searchBook {
@@ -118,13 +118,7 @@ header .container {
   width: 75%;
 }
 #searchBook button {
-  width: 15%;
-}
-.search-section h2 {
-  margin-bottom: 5px;
-}
-.search-section h2 > span {
-  color: red;
+  width: 18%;
 }
 
 #searchSubmit {
@@ -143,34 +137,55 @@ header .container {
   justify-content: space-between;
   align-items: start;
   gap: 10px;
-  margin-top: 20px;
 }
 .input-section {
-  padding: 20px;
-  width: 40%;
+  padding: 20px 20px 20px 0;
+  width: 30%;
 }
 
 .wrapper-book-shelf {
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  padding: 20px 10px 10px 20px;
   border-radius: 10px;
-  width: 60%;
+  width: 70%;
   background-color: var(--secondary-color);
 }
 .book-shelf {
   margin-bottom: 10px;
+  width: 50%;
+  overflow: hidden;
 }
 .book-shelf h2 {
+  text-decoration: underline;
+  font-size: 20px;
+  font-weight: 700;
   margin-bottom: 5px;
 }
+
 .book-item {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
+.book-item h3 {
+  word-wrap: break-word;
+  font-weight: 600;
+}
+.book-item p {
+  word-wrap: break-word;
+}
 
 .book-list .action {
+  width: 100%;
   display: flex;
   gap: 5px;
+}
+.book-list .action .green,
+.red {
+  width: 50%;
 }
 .book-list article {
   padding: 10px;
@@ -180,11 +195,16 @@ header .container {
 }
 
 .input-section h2 {
+  font-size: 20px;
+  font-weight: 700;
   margin-bottom: 5px;
 }
 #inputBook .input,
 .input-inline {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+#inputBook label {
+  font-size: 14px;
 }
 
 .input input {
@@ -192,6 +212,45 @@ header .container {
   margin-top: 5px;
 }
 /* main content end */
+
+/* confirm delete start */
+.wrapper-confirm-delete.show-confirm-delete {
+  display: block;
+}
+.wrapper-confirm-delete {
+  display: none;
+  background-color: white;
+  width: 470px;
+  height: 190px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.wrapper-confirm-delete h2 {
+  font-weight: 400;
+  padding: 10px 10px 10px 20px;
+}
+.wrapper-confirm-delete p {
+  font-size: 16px;
+  padding: 10px 10px 10px 20px;
+}
+.btn-confirm-delete {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 10px;
+  gap: 20px;
+}
+.btn-confirm-delete .grey {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.btn-confirm-delete .red {
+  background-color: red;
+  width: 90px;
+}
 
 @media (min-width: 768px) and (max-width: 829px) {
   #searchBook input {
