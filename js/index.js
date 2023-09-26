@@ -1,5 +1,5 @@
 "use strict";
-let todos = [];
+let books = [];
 let searchResults = [];
 const checkbox = document.getElementById("inputBookIsComplete");
 const confirmDelete = document.querySelector(".wrapper-confirm-delete");
@@ -10,7 +10,7 @@ const buttonCloseAll = document.querySelector(".close-confirm-delete-all");
 const deleteBook = document.getElementById("deleteBook");
 const batalDelete = document.getElementById("batalDelete");
 const deleteAll = document.querySelector(".removeAllBooks");
-const searchTodos = document.getElementById("searchBook");
+const searchBooks = document.getElementById("searchBook");
 const submitForm = document.getElementById("inputBook");
 
 const RENDER_EVENT = "render-todo";
@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // event untuk fitur search by Title
-  searchTodos.addEventListener("submit", (event) => {
+  searchBooks.addEventListener("submit", (event) => {
     event.preventDefault();
-    searchResults = searchTodo();
+    searchResults = searchBook();
     renderResults();
     document.dispatchEvent(new Event(RENDER_EVENT));
   });
@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // function untuk mengambil input user
-  function searchTodo() {
+  function searchBook() {
     const searchBookTitle = document.getElementById("searchBookTitle").value.toLowerCase();
-    return todos.filter((item) => item.title.toLowerCase().includes(searchBookTitle));
+    return books.filter((item) => item.title.toLowerCase().includes(searchBookTitle));
   }
 
   // function untuk membuat id unik
@@ -60,19 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // function untuk remove todo
-  function removeFromTodo(id) {
+  function removeFromBooks(id) {
     if (deleteBook) {
-      todos = todos.filter((item) => item.id !== id);
+      books = books.filter((item) => item.id !== id);
       searchResults = searchResults.filter((item) => item.id !== id);
-      saveTodos();
+      saveBooks();
       renderResults();
     }
     document.dispatchEvent(new Event(RENDER_EVENT));
   }
 
   // function untuk undo complete to uncomplete todo
-  function undoFromTodoComplete(id) {
-    const findTodo = todos.filter((item) => {
+  function undoFromBookComplete(id) {
+    const findBook = books.filter((item) => {
       if (item.id === id) {
         return (item.isComplete = false);
       }
@@ -81,8 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // function untuk undo uncomplete to complete todo
-  function undoFromTodoUnComplete(id) {
-    const findTodo = todos.filter((item) => {
+  function undoFromBookUnComplete(id) {
+    const findTodo = books.filter((item) => {
       if (item.id === id) {
         return (item.isComplete = true);
       }
@@ -90,41 +90,43 @@ document.addEventListener("DOMContentLoaded", () => {
     document.dispatchEvent(new Event(RENDER_EVENT));
   }
 
-  // function untuk meambahkan todo ke dalam todos
-  function addTodo() {
+  // function untuk meambahkan todo ke dalam books
+  function addBook() {
     const title = document.getElementById("inputBookTitle").value;
     const author = document.getElementById("inputBookAuthor").value;
     const timestamp = document.getElementById("inputBookYear").value;
     const checkbox = document.getElementById("inputBookIsComplete").checked;
 
-    const todo = {
+    const book = {
       id: generateId(),
       title,
       author,
       year: timestamp,
       isComplete: checkbox,
     };
-    todos = [...todos, todo];
-    saveTodos();
+    books = [...books, book];
+    searchResults = [...searchResults, book];
+
+    saveBooks();
     document.getElementById("inputBookTitle").value = "";
     document.getElementById("inputBookAuthor").value = "";
     document.getElementById("inputBookYear").value = "";
     document.getElementById("inputBookIsComplete").checked = false;
     keteranganBuku.innerText = "Belum Selesai dibaca";
-
+    renderResults();
     document.dispatchEvent(new Event(RENDER_EVENT));
   }
 
   // function untuk membuat todo
-  function makeTodo(todo) {
+  function make(book) {
     const titleElement = document.createElement("h3");
-    titleElement.innerText = todo.title;
-    titleElement.innerText = `Judul : ${todo.title}`;
+    titleElement.innerText = book.title;
+    titleElement.innerText = `Judul : ${book.title}`;
     const authorElement = document.createElement("p");
-    authorElement.innerText = `Penulis : ${todo.author}`;
+    authorElement.innerText = `Penulis : ${book.author}`;
 
     const yearElement = document.createElement("p");
-    yearElement.innerText = `Tahun : ${todo.year}`;
+    yearElement.innerText = `Tahun : ${book.year}`;
 
     const articleElement = document.createElement("article");
     articleElement.classList.add("book-item");
@@ -146,37 +148,38 @@ document.addEventListener("DOMContentLoaded", () => {
     ketButtonDelete.textContent = "Hapus buku";
     buttonDelete.append(iconDelete, ketButtonDelete);
 
-    if (todo.isComplete) {
+    if (book.isComplete) {
       ketButtonUndo.textContent = "Belum Selesai dibaca";
       buttonCheklist.append(iconUndo, ketButtonUndo);
       buttonCheklist.addEventListener("click", () => {
-        undoFromTodoComplete(todo.id);
+        undoFromBookComplete(book.id);
       });
     } else {
       ketButtonUndo.textContent = "Selesai dibaca";
       buttonCheklist.append(iconUndo, ketButtonUndo);
       buttonCheklist.addEventListener("click", () => {
-        undoFromTodoUnComplete(todo.id);
+        undoFromBookUnComplete(book.id);
       });
     }
     buttonDelete.addEventListener("click", () => {
-      showDeleteConfirmation(todo.id);
+      showDeleteConfirmation(book.id);
     });
     divWrapperButtons.append(buttonCheklist, buttonDelete);
 
     articleElement.append(titleElement, authorElement, yearElement);
     articleElement.appendChild(divWrapperButtons);
 
-    articleElement.setAttribute("id", `todo-${todo.id}`);
+    articleElement.setAttribute("id", `book-${book.id}`);
     return articleElement;
   }
-  // function untuk menghapus semua todo dari todos by Id
+  // function untuk menghapus semua book dari books by Id
   function showDeleteAllConfirmation() {
     confirmDeleteAll.classList.add("show-confirm-delete-all");
 
     const deleteAllBook = document.getElementById("deleteAllBook");
     deleteAllBook.addEventListener("click", () => {
-      todos = [];
+      books = [];
+      searchResults = [];
       localStorage.clear();
       confirmDeleteAll.classList.remove("show-confirm-delete-all");
       showButtonDeleteAll();
@@ -190,12 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // function untuk menghapus todo dari todos by Id
+  // function untuk menghapus todo dari books by Id
   function showDeleteConfirmation(id) {
     confirmDelete.classList.add("show-confirm-delete");
 
     deleteBook.addEventListener("click", () => {
-      removeFromTodo(id);
+      removeFromBooks(id);
       confirmDelete.classList.remove("show-confirm-delete");
     });
 
@@ -205,18 +208,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Fungsi untuk menampilkan hasil pencarian atau juga todos
+  // Fungsi untuk menampilkan hasil pencarian atau juga books
   function renderResults() {
     const incompleteBookshelfList = document.getElementById("incompleteBookshelfList");
     const completeBookshelfList = document.getElementById("completeBookshelfList");
 
     incompleteBookshelfList.innerHTML = "";
     completeBookshelfList.innerHTML = "";
-
-    const resultsToDisplay = searchResults.length > 0 ? searchResults : todos;
+    const resultsToDisplay = searchResults.length > 0 ? searchResults : books;
 
     resultsToDisplay.forEach((result) => {
-      const resultElement = makeTodo(result);
+      const resultElement = make(result);
       if (result.isComplete) {
         completeBookshelfList.append(resultElement);
       } else {
@@ -227,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // function toggle button delete all
   function showButtonDeleteAll() {
-    if (todos.length === 0) {
+    if (books.length === 0) {
       deleteAll.style.display = "none";
     } else {
       deleteAll.style.display = "block";
@@ -235,28 +237,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // function untuk menyimpan todo ke local-storange
-  function saveTodos() {
-    localStorage.setItem("todos", JSON.stringify(todos));
+  function saveBooks() {
+    localStorage.setItem("books", JSON.stringify(books));
   }
   // even submit add todo
   submitForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    addTodo();
+    addBook();
   });
 
-  const storedTodos = localStorage.getItem("todos");
-  if (storedTodos) {
-    todos = JSON.parse(storedTodos);
+  const storedBooks = localStorage.getItem("books");
+  if (storedBooks) {
+    books = JSON.parse(storedBooks);
     renderResults();
     document.dispatchEvent(new Event(RENDER_EVENT));
   }
   showButtonDeleteAll();
-
-  // custom event sebagai patokan jika ada perubahan pada variable todos
+  // custom event sebagai patokan jika ada perubahan pada variable books
 
   document.addEventListener(RENDER_EVENT, () => {
     showButtonDeleteAll();
-    saveTodos();
+    saveBooks();
     renderResults();
   });
 });
