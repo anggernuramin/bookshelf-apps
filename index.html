@@ -30,7 +30,7 @@
       <section class="search-section">
         <form id="searchBook">
           <label for="searchBookTitle">Judul</label>
-          <input id="searchBookTitle" placeholder="Naruto shipudden .... " type="text" />
+          <input id="searchBookTitle" placeholder="Structure and Interpretation of Computer Programs .... " type="search" />
           <button id="searchSubmit" type="submit">Cari</button>
         </form>
       </section>
@@ -61,62 +61,57 @@
           <section class="book-shelf">
             <h2>Belum selesai dibaca</h2>
 
-            <div id="incompleteBookshelfList" class="book-list">
-              <article class="book-item">
-                <h3>Book Title</h3>
-                <p>Penulis: John doe</p>
-                <p>Tahun: 2002</p>
-
-                <div class="action">
-                  <button class="green">Selesai dibaca</button>
-                  <button class="red">Hapus buku</button>
-                </div>
-              </article>
-              <article class="book-item">
-                <h3>Book Title</h3>
-                <p>Penulis: John Doe</p>
-                <p>Tahun: 2002</p>
-
-                <div class="action">
-                  <button class="green"><i class="fas fa-undo"></i>Selesai dibaca</button>
-                  <button class="red"><i class="fas fa-trash"></i> Hapus buku</button>
-                </div>
-              </article>
-            </div>
+            <div id="incompleteBookshelfList" class="book-list"></div>
           </section>
 
           <section class="book-shelf">
             <h2>Selesai dibaca</h2>
 
-            <div id="completeBookshelfList" class="book-list">
-              <!-- <article class="book-item">
-                <h3>Book Title</h3>
-                <p>Penulis: John Doe</p>
-                <p>Tahun: 2002</p>
-
-                <div class="action">
-                  <button class="green">Belum selesai di Baca</button>
-                  <button class="red">Hapus buku</button>
-                </div>
-              </article> -->
-            </div>
+            <div id="completeBookshelfList" class="book-list"></div>
           </section>
-          <button class="removeAllBooks red">Hapus semua Buku</button>
+          <button class="removeAllBooks red" style="display: none">Hapus semua Buku</button>
         </div>
       </div>
     </main>
     <div class="wrapper-confirm-delete">
-      <h2>Konfirmasi Hapus</h2>
-      <hr />
-      <p>
-        Apakah Anda yakin ingin menghapus buku ini? <br />
-        Tindakan ini akan menghapus buku dari daftar buku secara permanen. <br />
-      </p>
-      <div class="btn-confirm-delete action">
-        <button id="batalDelete" class="grey">Batal</button>
-        <button id="deleteBook" class="red">Ok</button>
+      <div class="confirm-delete">
+        <div class="header-confirm-delete">
+          <h2>Konfirmasi Hapus</h2>
+          <span class="close-confirm-delete">
+            <i class="fas fa-times"></i>
+          </span>
+        </div>
+
+        <hr />
+        <p>
+          Apakah Anda yakin ingin menghapus buku ini ? <br />
+          Tindakan ini akan menghapus buku dari daftar buku secara permanen. <br />
+        </p>
+        <div class="btn-confirm-delete action">
+          <button id="batalDelete" class="grey">Batal</button>
+          <button id="deleteBook" class="red">Ok</button>
+        </div>
       </div>
-      <div></div>
+    </div>
+
+    <div class="wrapper-confirm-delete-all">
+      <div class="confirm-delete-all">
+        <div class="header-confirm-delete">
+          <h2>Konfirmasi Hapus</h2>
+          <span class="close-confirm-delete-all">
+            <i class="fas fa-times"></i>
+          </span>
+        </div>
+        <hr />
+        <p class="deskripsi-confirm-delete">
+          Apakah Anda yakin ingin menghapus <span>semua buku </span> ini ? <br />
+          Tindakan ini akan menghapus buku dari daftar buku secara permanen. <br />
+        </p>
+        <div class="btn-confirm-delete action">
+          <button id="batalDeleteAllBook" class="grey">Batal</button>
+          <button id="deleteAllBook" class="red">Ok</button>
+        </div>
+      </div>
     </div>
 
     <script src="js/index.js"></script>
