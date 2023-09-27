@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: generateId(),
       title,
       author,
-      year: timestamp,
+      year: parseInt(timestamp),
       isComplete: checkbox,
     };
     books = [...books, book];
